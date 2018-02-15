@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
         return (
             <nav>
-                <div className="nav-wrapper">
+                <div className="navbar">
                     <Link to="/" className="left brand-logo">Imdb Clone</Link>                    
                 </div>
             </nav>

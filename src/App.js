@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/header';
+import Search from './components/searchComponent';
 
 
 
@@ -11,6 +12,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="container">
           <Header />
+          <Search />
         </div>
       </BrowserRouter>  
     );
