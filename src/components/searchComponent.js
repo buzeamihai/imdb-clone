@@ -28,9 +28,9 @@ class Search extends React.Component {
 
     render(){
         return (
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" value={ this.state.search } onChange={ this.onSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
-                <select class="custom-select" id="inputGroupSelect">
+            <div className="input-group mb-3">
+                <input type="text" className="form-control" value={ this.state.search } onChange={ this.onSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
+                <select className="custom-select" id="inputGroupSelect">
                     <option selected>All</option>
                     <option value="1">Title</option>
                     <option value="2">Year</option>
@@ -44,8 +44,8 @@ class Search extends React.Component {
                     <option value="10">imdbID</option>
                     <option value="11">Type</option>
                 </select>
-                <div class="input-group-append">
-                    <button className="btn btn-warning btn-sm" type="submit" onClick={ this.onSearch }><span class="glyphicons glyphicons-search" aria-hidden="true"></span>Search</button>
+                <div className="input-group-append">
+                    <button className="btn btn-warning btn-sm" type="submit" onClick={ this.onSearch }><span className="glyphicons glyphicons-search" aria-hidden="true"></span>Search</button>
                 </div>
             </div>
             
