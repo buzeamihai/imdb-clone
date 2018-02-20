@@ -13,12 +13,13 @@ class App extends React.Component {
   render() {
     return(
       <BrowserRouter>
-        <div className="container">
+        <div className="container-fluid">
           <Header />
           
-          <Route path="/searchResult" component={ Search } />          
+          <Route path="/search/:categ/:query" component={ (props) => [<h1>Search </h1>,<p>{props.match.params.categ}</p>,<p>{props.match.params.query}</p>] } />          
           <Route path="/register" component={ Register } />
-          <Route path="/login" component={ () => <h2>Log In</h2> } />
+          <Route path="/login" component={ () => <p>Log In</p> } />
+          
           <MovieList />
           <Movie />
           

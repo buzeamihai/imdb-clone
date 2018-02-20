@@ -7,8 +7,8 @@ import  { PropTypes } from 'react';
 import axios from 'axios';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: []
     }
