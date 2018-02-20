@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import Search from './searchComponent';
 
-
 class Header extends Component {
     render() {
         return (
