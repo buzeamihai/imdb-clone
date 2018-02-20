@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import Search from './searchComponent';
 
-
 class Header extends Component {
     render() {
         return (
@@ -12,6 +11,7 @@ class Header extends Component {
                 <div className="row right">
                     <Link to="/register" className="col s4">Register</Link>
                     <Link to="/login" className="col s4">Log in</Link>
+            
                 </div>            
             </header>
             

@@ -1,15 +1,14 @@
 import { SEARCH_MOVIE } from './types';
+import { GET_MOVIES } from './types';
+
 import axios from 'axios';
 
-// export function searchMovie(movie){
-//     const url = 'http://localhost:8000/movies';
 
-//     const result = axios.get(`${url}`);
-
-//     console.log(result);
-
-//     return {
-//         type: SEARCH_MOVIE,
-//         payload: result       
-//     }
-// }
+export function getMovie(movies) {
+    const result = axios.get('http://localhost:8000/movies')
+        console.log(result)
+       return {
+             type: GET_MOVIES,
+             payload: result       
+         }
+}
