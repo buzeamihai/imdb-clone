@@ -4,7 +4,7 @@ import Header from './components/header';
 import Homepage from './components/homepage';
 import Register from './components/register';
 import Search from './components/searchComponent';
-import Login from './components/login';
+import LoginPage from './components/login';
 
 
 class App extends React.Component {
@@ -13,12 +13,10 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="container-fluid">
           <Header />          
-          <Homepage />
+          <Route exact path="/" component={ Homepage } />
           <Route path="/search/:categ/:query" component={ (props) => [<h1>Search </h1>,<p>{props.match.params.categ}</p>,<p>{props.match.params.query}</p>] } />         
           <Route path="/register" component={ Register } />
-          <Route path="/login" component={ Login } />
-          <MovieList />
-          <Movie />          
+          <Route path="/login" component={ LoginPage } />        
         </div>
       </BrowserRouter>  
     );
