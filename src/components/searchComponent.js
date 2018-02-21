@@ -5,33 +5,38 @@ class Search extends React.Component {
         super(props);
         this.state = {
             search: '',
-            movies: []
+            movies: [],
+            category: 0
         }
     }
 
-    onSearchInputChange = (e) => {
-        this.setState({
-            search: e.target.value
-        });
+    handleCategoryChange = (e) => {
+        this.setState = { category: e.target.value };
     }
 
-    onSearch = (e) => {
-        //dispatch la actiunea de searchWeather
-        this.props.searchMovie(this.state.search);
+    // onSearchInputChange = (e) => {
+    //     this.setState({
+    //         search: e.target.value
+    //     });
+    // }
+
+    // onSearch = (e) => {
+    //     //dispatch la actiunea de searchWeather
+    //     this.props.searchMovie(this.state.search);
         
-        //goleste inputul
-        this.setState({
-            search: '',
-            movies: [...this.state.movies, this.state.search]
-        })
-    }
+    //     //goleste inputul
+    //     this.setState({
+    //         search: '',
+    //         movies: [...this.state.movies, this.state.search]
+    //     })
+    // }
 
     render(){
         return (
             <div className="input-group mb-3">
                 <input type="text" className="form-control" value={ this.state.search } onChange={ this.onSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
-                <select className="custom-select" id="inputGroupSelect">
-                    <option selected>All</option>
+                <select className="custom-select" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
+                    <option value="0">All</option>
                     <option value="1">Title</option>
                     <option value="2">Year</option>
                     <option value="3">Runtime</option>
