@@ -2,18 +2,27 @@ import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import Search from './searchComponent';
 
-
 class Header extends Component {
     render() {
         return (
-            <header className="container">
-                <Link to="/" className="left brand-logo">Imdb Clone</Link> 
-                <Search />                   
-                <div className="row right">
-                    <Link to="/register" className="col s4">Register</Link>
-                    <Link to="/login" className="col s4">Log in</Link>
-                </div>            
-            </header>
+            
+                <div className="row bg-light">
+                    <div className="col-10">
+                        <nav className="navbar navbar-expand-md navbar-light">
+                            <Link to="/" className="navbar-brand">IMDb Clone</Link> 
+                            <Search />                   
+                            <ul className="navbar-nav">
+                                <li  className="nav-item">
+                                    <Link to="/register" className="nav-link">Register</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/login" className="nav-link">Log in</Link>
+                                </li>
+                            </ul>          
+                        </nav>
+                    </div>
+                </div>
+            
             
         );
     }
