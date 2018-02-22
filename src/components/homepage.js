@@ -19,6 +19,7 @@ class Homepage extends Component {
         console.log(this.props.movies)
         if(this.props.movies && this.props.movies.results) {
             return <MovieList movies={this.props.movies.results} />;
+
         } else {
             return (
                 <div>
