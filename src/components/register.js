@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './register.css';
 import axios from 'axios';
 
 
@@ -16,7 +15,7 @@ class Register extends Component {
         this.setName = this.setName.bind(this);
         this.setPassword = this.setPassword.bind(this);
         this.setRepassword = this.setRepassword.bind(this);
-        this.handleClick = this.handleClick.bind(this);     
+        this.handleSubmit = this.handleSubmit.bind(this);     
         this.setLocalStorage = this.setLocalStorage.bind(this);
     }
     setName(event) {
@@ -41,10 +40,11 @@ class Register extends Component {
           }).then( res => this.storeToken(res), err => console.warn(err));
     }
     storeToken( res ) {
+        
         this.setState({ authToken: res.data.accessToken });
         console.log( this.state.authToken);
     }
-    handleClick(e) {
+    handleSubmit(e) {
         this.postToServer();
 
         if ( Object.keys(localStorage).indexOf( this.state.name) > -1) {
@@ -55,12 +55,11 @@ class Register extends Component {
         } else {
             alert ('Please try again');
         }
-
-        e.preventDefault();
+        e.preventDefault();    
     }
     render() {
         return (
-          <form className="form register-form" onSubmit={this.handleSubmit}>
+          <form className="form register-form" onSubmit={ this.handleSubmit }>
             <label>
               Name:
               <input type="text" placeholder={ this.state.name } onChange={ this.setName } />
@@ -73,7 +72,7 @@ class Register extends Component {
               Check password:
               <input type="password" placeholder={ this.state.repassword } onChange={this.setRepassword}/>
             </label>
-            <button onClick={ this.handleClick }> Submit</button>
+            <button type="submit"> Register </button>
           </form>
         );
     }

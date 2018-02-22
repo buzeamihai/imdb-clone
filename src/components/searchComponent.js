@@ -4,38 +4,32 @@ class Search extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            search: '',
-            movies: [],
+            query: '',
             category: 0
         }
     }
 
     handleCategoryChange = (e) => {
-        this.state.category = e.target.value;
+        this.setState({
+            category : e.target.value
+        }) 
     }
 
-    // onSearchInputChange = (e) => {
-    //     this.setState({
-    //         search: e.target.value
-    //     });
-    // }
+    handleSearchInputChange = (e) => {
+        this.setState({
+            query: e.target.value
+        });
+    }
 
-    // onSearch = (e) => {
-    //     //dispatch la actiunea de searchWeather
-    //     this.props.searchMovie(this.state.search);
-        
-    //     //goleste inputul
-    //     this.setState({
-    //         search: '',
-    //         movies: [...this.state.movies, this.state.search]
-    //     })
+    // onSearchPage = (e) => {
+    //     // <SearchPage/>
     // }
 
     render(){
         return (
-            <div className="input-group mb-3">
-                <input type="text" className="form-control" value={ this.state.search } onChange={ this.onSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
-                <select className="custom-select" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
+            <div className="input-group mb-3 col-8">
+                <input type="text" className="form-control col-9" value={ this.state.query } onChange={ this.handleSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
+                <select className="custom-select col-3" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
                     <option value="0">All</option>
                     <option value="1">Title</option>
                     <option value="2">Year</option>
@@ -50,7 +44,7 @@ class Search extends React.Component {
                     <option value="11">Type</option>
                 </select>
                 <div className="input-group-append">
-                    <button className="btn btn-warning btn-sm" type="submit" onClick={ this.onSearch }><span className="glyphicons glyphicons-search" aria-hidden="true"></span>Search</button>
+                    <button className="btn btn-warning btn-sm" type="submit" onClick={ this.onSearchPage }>Search</button>
                 </div>
             </div>
             

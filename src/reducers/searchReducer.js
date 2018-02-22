@@ -9,7 +9,7 @@ export default function searchReducer(state = [], action) {
         case SEARCH_MOVIE:
             console.log(action.payload);
 
-            return [...state, action.payload.data];
+            return (action.payload.data);
         default:
             return state;
     }
