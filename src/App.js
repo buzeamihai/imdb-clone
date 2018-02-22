@@ -17,7 +17,6 @@ class App extends React.Component {
           <Route path="/register" component={ Register } />
           <Route path="/login" component={ () => <h2>Log In</h2> } />
           <Link to="/movies" className="col s4"></Link>
-         
         </div>
       </BrowserRouter>  
     );
