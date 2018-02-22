@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import MovieList from './movieList';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import { getMovie} from '../actions';
+import { getMovies } from '../actions';
 
 
 class Homepage extends Component {
@@ -12,7 +12,7 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        this.props.getMovie();
+        this.props.getMovies();
     }
 
     render(){
@@ -30,7 +30,7 @@ class Homepage extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ getMovie }, dispatch);
+    return bindActionCreators({ getMovies }, dispatch);
 }
 
 function mapStateToProps(state) {

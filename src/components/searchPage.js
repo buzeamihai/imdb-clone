@@ -1,19 +1,27 @@
 import React from 'react';
-import Search from 'searchComponent';
+
+
+
+import MovieList from './movieList';
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import { searchMovie } from '../actions';
+
+
 
 class SearchPage extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            search: '',
-            movies: [],
+            query: '',
             category: 0
         }
     }
 
     componentDidMount(){
-        return console.log(this.props.match.params);
+        
         //declansez actiunea
+        this.props.searchMovie(this.props.match.params.categ, this.props.match.params.query);
     }
 
     
@@ -21,12 +29,23 @@ class SearchPage extends React.Component {
     
 
     render(){
-        if(this.props.movies) {
-        return (
-            <MovieList  movies= {this.props.movies}/>
-            
-        )}
+        if(this.props.search) {
+            return (
+                <MovieList  movies={this.props.search.results}/>
+            )
+        } else return <div>Loading....</div>
+
     }
 }
 
-export default SearchPage;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ searchMovie }, dispatch);
+}
+
+function mapStateToProps(state) {
+    return {
+        search: state.search
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
