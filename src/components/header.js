@@ -7,9 +7,11 @@ class Header extends Component {
         return (
             
                 <div className="row bg-light">
-                    <div className="col-10">
+                    <div  className="col-10 navbarSprite">
                         <nav className="navbar navbar-expand-md navbar-light">
-                            <Link to="/" className="navbar-brand">IMDb Clone</Link> 
+                            <Link to="/" className="navbar-brand">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" width="100px"/>
+                            </Link> 
                             <Search />                   
                             <ul className="navbar-nav">
                                 <li  className="nav-item">

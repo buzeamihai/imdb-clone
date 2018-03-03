@@ -1,32 +1,41 @@
-
 import React, { Component } from 'react';
 import style from '../style.css';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
-import { Link} from 'react-router-dom';
 import Movie from './movies';
+import { Link, Route } from 'react-router-dom';
+import MovieDetails from './movieDetails';
+
 
 class MovieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movies: [],
+      selectMovie: {},
     }
   }
 
- 
+  selectMovie = (data) => {
+    this.setState({
+      selectMovie: data
+    });
+  }
+
+
   render() {
     let movieTitles;
-    
       movieTitles = this.props.movies.map(
-        (data) => (
-          <Movie result={data}/> //result devine prop
-        )
+        (data) => ( //result devine props
+          <Link to={`/movies/${data._id}`}>
+            <Movie result={data} selectMovie={this.selectMovie}/> 
+          </Link>
+        )  
       );
   
-    return <div className="row">{movieTitles}
-    </div>;
+    return (
+    <div className="row">
+      {movieTitles}
+    </div>);
     }
   }
 
