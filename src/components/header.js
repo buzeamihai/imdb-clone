@@ -6,12 +6,14 @@ class Header extends Component {
     render() {
         return (
             
-                <div className="row bg-light justify-content-center">
-                    <div className="col-md-10">
+                <div className="row bg-light">
+                    <div  className="col-10 navbarSprite">
                         <nav className="navbar navbar-expand-md navbar-light">
-                            <Link to="/" className="navbar-brand col-md-3 col-sm-10">IMDb Clone</Link> 
-                            <Search className="col-md-7 col-sm-10"/>                   
-                            <ul className="navbar-nav col-md-2 col-sm-10">
+                            <Link to="/" className="navbar-brand">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" width="100px"/>
+                            </Link> 
+                            <Search />                   
+                            <ul className="navbar-nav">
                                 <li  className="nav-item">
                                     <Link to="/register" className="nav-link">Register</Link>
                                 </li>

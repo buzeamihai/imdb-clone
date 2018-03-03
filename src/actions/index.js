@@ -1,5 +1,6 @@
 import { GET_MOVIES } from './types';
 import { SEARCH_MOVIE } from './types';
+import { GET_DETAILS } from './types';
 import axios from 'axios';
 
 export function searchMovie(categ, query) {
@@ -35,4 +36,14 @@ export function getMovies(page=1) {
         type: GET_MOVIES,
         payload: result       
     }
+}
+
+
+export function getDetails(id) {
+    console.log("text", id);
+    const result = axios.get(`http://localhost:8000/movies/${id}`)
+       return {
+             type: GET_DETAILS,
+             payload: result       
+         }
 }

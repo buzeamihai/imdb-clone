@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link, BrowserRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Header from './components/header';
 import Homepage from './components/homepage';
 import Register from './components/register';
 import SearchPage from './components/searchPage';
 
 import LoginPage from './components/login';
+import Movie from './components/movies';
+import MovieDetails from './components/movieDetails';
 
 
 class App extends React.Component {
@@ -18,9 +20,9 @@ class App extends React.Component {
           
           <Route path="/search/:categ/:query" component={ SearchPage } />         
           <Route path="/register" component={ Register } />
-          
-          <Link to="/movies"></Link>
-          <Route path="/login" component={ LoginPage } />        
+          <Route path="/login" component={ () => <h2>Log In</h2> } />
+          <Route path="/login" component={ LoginPage } />
+          <Route path="/movies/:id" component={ MovieDetails } />  
         </div>
       </BrowserRouter>  
     );

@@ -4,7 +4,10 @@ import Pagination from './pagination';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import { getMovies } from '../actions';
+import { getMovies} from '../actions';
+import { Link, Route } from 'react-router-dom';
+import MovieList from './movieList';
+import style from '../style.css';
 
 
 class Homepage extends Component {
@@ -34,14 +37,17 @@ class Homepage extends Component {
 
     render(){
         if(this.props.movies && this.props.movies.results) {
-            return <MovieList movies={this.props.movies.results} pagination = {this.props.movies.pagination} path= {this.props.match.path} />
-                     
+            return (
+                <div className="wraper container">
+                    <MovieList movies={this.props.movies.results} pagination = {this.props.movies.pagination} path= {this.props.match.path} />
+                </div>     
+            );
         } else {
             return (
                 <div>
                     <h2>Loading...</h2>
                 </div>
-            )
+            );
         }
     }
 }
