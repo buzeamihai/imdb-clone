@@ -43,9 +43,9 @@ class Search extends React.Component {
 
         return (
 
-            <div className="input-group mb-3 col-8">
-                <input type="text" className="form-control col-9" value={ this.state.query } onChange={ this.handleSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
-                <select className="custom-select col-3" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
+            <div className="input-group mb-3">
+                <input type="text" className="form-control col-md-9" value={ this.state.query } onChange={ this.handleSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
+                <select className="custom-select col-md-3" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
                     <option value="All">All</option>
                     <option value="Title">Title</option>
                     <option value="Year">Year</option>
@@ -61,10 +61,7 @@ class Search extends React.Component {
                 </select>
                 <div className="input-group-append">
                     <button className="btn btn-warning btn-sm" type="submit" onClick = { this.onClickButton }>Search</button>
-                    
                 </div>
-
-
             </div>
             
         );

@@ -1,11 +1,9 @@
 
 import React, { Component } from 'react';
 import style from '../style.css';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import axios from 'axios';
-import { Link} from 'react-router-dom';
+
 import Movie from './movies';
+import Pagination from './pagination';
 
 class MovieList extends Component {
   constructor(props) {
@@ -18,15 +16,21 @@ class MovieList extends Component {
  
   render() {
     let movieTitles;
-    
-      movieTitles = this.props.movies.map(
-        (data) => (
+    movieTitles = this.props.movies.map((data) => (
           <Movie result={data}/> //result devine prop
         )
       );
   
-    return <div className="row">{movieTitles}
-    </div>;
+    return (
+      <div>
+        <div className="row">
+          
+            { movieTitles }
+        
+        </div>
+        <Pagination pagination={this.props.pagination} path={this.props.path} />
+      </div>
+      )
     }
   }
 

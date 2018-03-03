@@ -19,14 +19,8 @@ class SearchPage extends React.Component {
     }
 
     componentDidMount(){
-        
-        //declansez actiunea
         this.props.searchMovie(this.props.match.params.categ, this.props.match.params.query);
     }
-
-    
-
-    
 
     render(){
         if(this.props.search) {

@@ -13,12 +13,13 @@ class App extends React.Component {
     return(
       <BrowserRouter>
         <div className="container-fluid">
-          <Header />          
+          <Header />       
           <Route exact path='/' component = { Homepage } />
+          
           <Route path="/search/:categ/:query" component={ SearchPage } />         
           <Route path="/register" component={ Register } />
-          <Route path="/login" component={ () => <h2>Log In</h2> } />
-          <Link to="/movies" className="col s4"></Link>
+          
+          <Link to="/movies"></Link>
           <Route path="/login" component={ LoginPage } />        
         </div>
       </BrowserRouter>  

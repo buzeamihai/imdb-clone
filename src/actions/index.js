@@ -17,20 +17,22 @@ export function searchMovie(categ, query) {
     
     console.log(result);
 
-    
-    
     return {
-            type: SEARCH_MOVIE,
-            payload: result       
+        type: SEARCH_MOVIE,
+        payload: result       
     }
 }
 
 
-export function getMovies(movies) {
-    const result = axios.get('http://localhost:8000/movies')
-        console.log(result)
-       return {
-             type: GET_MOVIES,
-             payload: result       
-         }
+export function getMovies(page=1) {
+
+    console.log(page);
+    const url = 'http://localhost:8000/movies?take=10&skip=';
+    const result = axios.get(`${url}${(page-1)*10}`);
+    
+    
+    return {
+        type: GET_MOVIES,
+        payload: result       
+    }
 }

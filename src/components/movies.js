@@ -6,11 +6,13 @@ class Movie extends React.Component {
   }
 	render(){
 		return (
-			<div className="col-sm-4">
+      <div className="col">
+        <div>
             <h6>{this.props.result.Title}</h6>
-            <a href='#'><img src={this.props.result.Poster} className="img-responsive" width="160px" height="223px" /></a>
+            <a href="#"><img src={this.props.result.Poster} className="img-responsive" /></a>
+        </div>
       </div>
-			)
+      )
 	}
 }
 
