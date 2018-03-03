@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import { getMovies} from '../actions';
 import { Link, Route } from 'react-router-dom';
-import MovieList from './movieList';
+
 import style from '../style.css';
 
 
@@ -27,13 +27,15 @@ class Homepage extends Component {
         console.log(page);
     }
 
-    componentDidUpdate() {
-        const page = queryString.parse(this.props.location.search).page;
-        console.log('props', page, this.state.currentPaginationPage);
-        if(page !== this.state.currentPaginationPage) {
-            this.componentDidMount();
-        }
-    }    
+    //prima oara cand porniti aplicatia comentati functia DidUpdate
+
+    // componentDidUpdate() {
+    //     const page = queryString.parse(this.props.location.search).page;
+    //     console.log('props', page, this.state.currentPaginationPage);
+    //     if(page !== this.state.currentPaginationPage) {
+    //         this.componentDidMount();
+    //     }
+    // }
 
     render(){
         if(this.props.movies && this.props.movies.results) {

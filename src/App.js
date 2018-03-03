@@ -20,7 +20,7 @@ class App extends React.Component {
           
           <Route path="/search/:categ/:query" component={ SearchPage } />         
           <Route path="/register" component={ Register } />
-          <Route path="/login" component={ () => <h2>Log In</h2> } />
+          
           <Route path="/login" component={ LoginPage } />
           <Route path="/movies/:id" component={ MovieDetails } />  
         </div>

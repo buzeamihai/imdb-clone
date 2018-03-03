@@ -12,7 +12,8 @@ class Pagination extends Component {
     render(){
         
         let array = [];
-        for (let i=1; i <= this.props.pagination.numberOfPages; i++) {
+        //for-ul ar trebui sa mearga pana la  this.props.pagination.numberOfPages dar e o eroare
+        for (let i=1; i <= 4; i++) {
             array.push(
                 <li className="nav-item nav-link">
                         <Link to={ this.props.path + '?page=' + i}>{i}</Link> 

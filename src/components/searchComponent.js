@@ -7,7 +7,7 @@ class Search extends React.Component {
         super(props);
         this.state = {
             query: '',
-            category: 'All',
+            category: 'Title',
             needRedirect: false
         }
     }

@@ -26,18 +26,23 @@ class MovieList extends Component {
 
   render() {
     let movieTitles;
-      movieTitles = this.props.movies.map(
-        (data) => ( //result devine props
-          <Link to={`/movies/${data._id}`}>
-            <Movie result={data} selectMovie={this.selectMovie}/> 
-          </Link>
-        )  
-      );
+    movieTitles = this.props.movies.map(
+      (data) => ( //result devine props
+        <Link to={`/movies/${data._id}`}>
+          <Movie result={data} selectMovie={this.selectMovie}/> 
+        </Link>
+      )  
+    );
   
     return (
-    <div className="row">
-      {movieTitles}
-    </div>);
+      <div>
+        <div className="row">
+          { movieTitles }
+        </div>
+        <Pagination pagination={this.props.pagination} path={this.props.path} />
+      </div>
+      )
+  
     }
   }
 
