@@ -1,10 +1,11 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import { getMovie} from '../actions';
+import { getMovies} from '../actions';
 import { Link, Route } from 'react-router-dom';
 import MovieList from './movieList';
 import style from '../style.css';
+
 
 class Homepage extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ class Homepage extends Component {
     } 
     
     componentDidMount() {
-        this.props.getMovie();
+        this.props.getMovies();
     }
 
     render(){
@@ -34,7 +35,7 @@ class Homepage extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ getMovie }, dispatch);
+    return bindActionCreators({ getMovies }, dispatch);
 }
 
 function mapStateToProps(state) {
