@@ -30,17 +30,20 @@ class LoginPage extends Component {
             return <Redirect to="/" />
         }
         return (
-          <form className="form register-form" onSubmit={ this.handleSubmit }>
-            <label>
-              Name:
-              <input type="text" placeholder={ this.state.name } onChange={ this.setName } />
-            </label>
-            <label>
-              Password:
-              <input type="password" placeholder={ this.state.password } onChange={ this.setPassword }/>
-            </label>
-            <button type="submit"> Login </button>
-          </form>
+            <div className="row justify-content-center mt-3">
+                <div className="col-md-5">
+                    <h5 class="contact">Log in</h5>
+                    <form onSubmit={ this.handleSubmit }>
+                        <div className="form-group">
+                            <input type="text" className="form-control bg-light" placeholder={ this.state.name } onChange={ this.setName } />
+                        </div>
+                        <div className="form-group">
+                            <input type="password" className="form-control bg-light" placeholder={ this.state.password } onChange={ this.setPassword }/>
+                        </div>
+                        <button type="submit" class="btn btn-secondary float-right"> Login </button>
+                    </form>
+                </div>
+            </div>
         );
     }
 }

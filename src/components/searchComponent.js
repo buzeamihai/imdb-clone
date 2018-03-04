@@ -1,11 +1,14 @@
 import React from 'react';
+import { searchMovie } from '../actions';
+import { Route, Redirect } from 'react-router';
 
 class Search extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
             query: '',
-            category: 0
+            category: 'Title',
+            needRedirect: false
         }
     }
 
@@ -21,30 +24,43 @@ class Search extends React.Component {
         });
     }
 
-    // onSearchPage = (e) => {
-    //     // <SearchPage/>
-    // }
+    onClickButton = () => {
+        this.setState({
+            needRedirect: true
+        })
+    }
 
+    componentDidUpdate() {
+        if (this.state.needRedirect){
+            this.setState({needRedirect:false, query: ''});
+        }
+    }
+    
     render(){
+        if (this.state.needRedirect) {
+            return <Redirect to={`/search/${ this.state.category }/${this.state.query}`}/>
+        }
+
         return (
-            <div className="input-group mb-3 col-8">
-                <input type="text" className="form-control col-9" value={ this.state.query } onChange={ this.handleSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
-                <select className="custom-select col-3" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
-                    <option value="0">All</option>
-                    <option value="1">Title</option>
-                    <option value="2">Year</option>
-                    <option value="3">Runtime</option>
-                    <option value="4">Genre</option>
-                    <option value="5">Language</option>
-                    <option value="6">Country</option>
-                    <option value="7">Poster</option>
-                    <option value="8">imdbRating</option>
-                    <option value="9">imdbVotes</option>
-                    <option value="10">imdbID</option>
-                    <option value="11">Type</option>
+
+            <div className="input-group mb-3">
+                <input type="text" className="form-control col-md-9" value={ this.state.query } onChange={ this.handleSearchInputChange } placeholder="Find movies, TV Shows, Celebrities and more ..."/>
+                <select className="custom-select col-md-3" id="inputGroupSelect" value={this.state.category} onChange={this.handleCategoryChange}>
+                    <option value="All">All</option>
+                    <option value="Title">Title</option>
+                    <option value="Year">Year</option>
+                    <option value="Runtime">Runtime</option>
+                    <option value="Genre">Genre</option>
+                    <option value="Language">Language</option>
+                    <option value="Country">Country</option>
+                    <option value="Poster">Poster</option>
+                    <option value="imdbRating">imdbRating</option>
+                    <option value="imdbVotes">imdbVotes</option>
+                    <option value="imdbID">imdbID</option>
+                    <option value="Type">Type</option>
                 </select>
                 <div className="input-group-append">
-                    <button className="btn btn-warning btn-sm" type="submit" onClick={ this.onSearchPage }>Search</button>
+                    <button className="btn btn-warning btn-sm" type="submit" onClick = { this.onClickButton }>Search</button>
                 </div>
             </div>
             

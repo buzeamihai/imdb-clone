@@ -1,11 +1,11 @@
-
 import React, { Component } from 'react';
 import style from '../style.css';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
-import MovieDetails from './movieDetails';
+import { Link, Route } from 'react-router-dom';
+
 import Movie from './movies';
+import Pagination from './pagination';
+import MovieDetails from './movieDetails';
 
 
 class MovieList extends Component {
@@ -15,29 +15,33 @@ class MovieList extends Component {
       movies: [],
       selectMovie: {},
     }
-    
   }
 
-  selectMovie = (movie) =>{
+  selectMovie = (data) => {
     this.setState({
-      selectMovie: movie
+      selectMovie: data
     });
   }
 
+
   render() {
     let movieTitles;
-    
-      movieTitles = this.props.movies.map(
-        (data) => (
-          <div className="col-sm-4">
-            <h6>{data.Title}</h6>
-            <a href='#'><img src={data.Poster} className="img-responsive" width="160px" height="223px" /></a>
-          </div>
-        )
-      );
+    movieTitles = this.props.movies.map(
+      (data) => ( //result devine props
+        <Link to={`/movies/${data._id}`}>
+          <Movie result={data} selectMovie={this.selectMovie}/> 
+        </Link>
+      )  
+    );
   
-    return <div className="row">{ movieTitles}
-    </div>;
+    return (
+      <div>
+        <div className="row">
+          { movieTitles }
+        </div>
+        <Pagination pagination={this.props.pagination} path={this.props.path} />
+      </div>
+      )
     }
   }
 
