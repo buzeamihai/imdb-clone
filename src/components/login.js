@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-//import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import { getAccessToken } from '../actions';
+import { Redirect } from 'react-router-dom';
 
 class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: 'Enter your name...',
-            password: 'Enter your password...',
-            isAuthenticated: false,
-            authToken: null
+            password: 'Enter your password...'
         }
         this.setName = this.setName.bind(this);
         this.setPassword = this.setPassword.bind(this);
@@ -20,29 +20,14 @@ class LoginPage extends Component {
     }
     setPassword(event) {
         this.setState({ password: event.target.value });
-    }
-    storeToken( res ) {
-        this.setState({ 
-            authToken: res.data.accessToken,
-            isAuthenticated: res.data.authenticated            
-        });
-    }
-    loginPost() {
-        return axios({
-            method: 'post',
-            url: 'http://localhost:8000/auth/login',
-            data: `username=${ this.state.name }&password=${ this.state.password }`,            
-          }).then( res => this.storeToken(res), err => console.warn(err));
-    }
-   
+    }   
     handleSubmit(e) {
-        this.loginPost();
-        console.log(this.state.isAuthenticated);
+        this.props.getAccessToken( this.state.name, this.state.password );        
         e.preventDefault();
     }
     render() {
-        if(this.state.isAuthenticated) {
-            return <div>Success</div>;
+        if ( this.props.accessToken ) {
+            return <Redirect to="/" />
         }
         return (
           <form className="form register-form" onSubmit={ this.handleSubmit }>
@@ -59,4 +44,12 @@ class LoginPage extends Component {
         );
     }
 }
-export default LoginPage;
+function mapDispatchToProps( dispatch ) {
+    return bindActionCreators({ getAccessToken }, dispatch);
+}
+function mapStateToProps( state ) {
+    return {
+        accessToken: state.accessToken
+    };  
+}
+export default connect( mapStateToProps, mapDispatchToProps )(LoginPage);

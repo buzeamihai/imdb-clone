@@ -7,8 +7,7 @@ import { getMovie} from '../actions';
 
 class Homepage extends Component {
     constructor(props){
-        super(props);
-        
+        super(props);        
     }
 
     componentDidMount() {
@@ -16,7 +15,6 @@ class Homepage extends Component {
     }
 
     render(){
-        console.log(this.props.movies)
         if(this.props.movies && this.props.movies.results) {
             return <MovieList movies={this.props.movies.results} />;
         } else {
@@ -39,4 +37,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default connect( mapStateToProps, mapDispatchToProps )(Homepage);

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { registerAction } from '../actions';
+import { Redirect } from 'react-router-dom';
 
 
 class Register extends Component {
@@ -9,7 +12,6 @@ class Register extends Component {
             name: 'Enter your name...',
             password: 'Set a password...',
             repassword: 'Retype your password...',
-            authToken: ''
         }        
         
         this.setName = this.setName.bind(this);
@@ -26,30 +28,16 @@ class Register extends Component {
     }
     setRepassword(event) {
         this.setState({ repassword: event.target.value });
-        console.log( this.state.repassword);
     }
     setLocalStorage(name, token ) {
         localStorage.setItem(name, token);
     } 
-    postToServer() {
-        return axios({
-            method: 'post',
-            url: 'http://localhost:8000/auth/register',
-            data: `username=${ this.state.name }&password=${ this.state.password }`,
-            
-          }).then( res => this.storeToken(res), err => console.warn(err));
-    }
-    storeToken( res ) {
-        
-        this.setState({ authToken: res.data.accessToken });
-        console.log( this.state.authToken);
-    }
     handleSubmit(e) {
-        this.postToServer();
+        this.props.registerAction( this.state.name, this.state.password );
 
         if ( Object.keys(localStorage).indexOf( this.state.name) > -1) {
             alert('already a member, proceed to login page');
-        } else if ( this.state.name && this.state.password === this.state.repassword ) {
+        } else if ( this.state.name && ( this.state.password === this.state.repassword ) ) {
             this.setLocalStorage( this.state.name, this.state.password );
             alert('You registered successfully');       
         } else {
@@ -58,6 +46,9 @@ class Register extends Component {
         e.preventDefault();    
     }
     render() {
+        if ( this.props.accessToken ) {
+            return <Redirect to="/" />
+        }
         return (
           <form className="form register-form" onSubmit={ this.handleSubmit }>
             <label>
@@ -77,4 +68,12 @@ class Register extends Component {
         );
     }
 }
-export default Register;
+function mapDispatchToProps( dispatch ) {
+    return bindActionCreators({ registerAction }, dispatch);
+}
+function mapStateToProps( state ) {
+    return {
+        accessToken: state.accessToken
+    };  
+}
+export default connect( mapStateToProps, mapDispatchToProps )(Register);

@@ -20,7 +20,7 @@ class MovieList extends Component {
 
   selectMovie = (movie) =>{
     this.setState({
-      showMovie: movie
+      selectMovie: movie
     });
   }
 
@@ -36,7 +36,7 @@ class MovieList extends Component {
         )
       );
   
-    return <div className="row">{movieTitles}
+    return <div className="row">{ movieTitles}
     </div>;
     }
   }

@@ -1,7 +1,12 @@
-import React from "react"
+import React from "react";
+import MovieList from './movieList';
 
 
 class Movie extends React.Component {
+	constructor(props){
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
+	}
 	handleClick = () => {
     this.props.selectMovie(this.props.article)
   }

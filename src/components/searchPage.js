@@ -16,10 +16,6 @@ class SearchPage extends React.Component {
         //declansez actiunea
     }
 
-    
-
-    
-
     render(){
         if(this.props.movies) {
         return (
